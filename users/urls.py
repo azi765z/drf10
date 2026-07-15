@@ -1,10 +1,11 @@
 from django.urls import path
-from . import views
+from .views import BookUpdateDestroyAPIView,BookList,BookCreate,BokkUpdate,BookDelete
+
 
 urlpatterns = [
-    path('userspro/', views.UserProList.as_view()),
-    path('userpro/create/', views.UserProCreate.as_view()),
-    path('userpro/update/<int:pk>/', views.UserProUpdate.as_view()),
-    path('userpro/delete/<int:pk>/', views.UserProDelete.as_view()),
-    path('userpro/<int:pk>/', views.UserProViews.as_view()),
+    path('cars/', BookList.as_view()),
+    path('cars/create/', BookCreate.as_view()),
+    path('cars/<int:pk>/update/', BokkUpdate.as_view()),
+    path('cars/<int:pk>/delete/', BookDelete.as_view()),
+    path('cars/<int:pk>/detail/', BookUpdateDestroyAPIView.as_view()),
 ]

@@ -1,28 +1,29 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import UserModel
-from .serializer import UserProtSerializer
+from .models import BookModel
+from .serializer import BookSerializer
 from rest_framework.generics import ListAPIView,CreateAPIView,RetrieveDestroyAPIView,RetrieveUpdateAPIView,RetrieveUpdateDestroyAPIView
-
 # Create your views here.
 
+class BookList(ListAPIView):
+    queryset = BookModel.objects.all()
+    serializer_class = BookSerializer
+    
+class BookCreate(CreateAPIView):
+    queryset = BookModel.objects.all()
+    serializer_class = BookSerializer
 
-class UserProList(ListAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = UserProtSerializer
-    
-class UserProCreate(CreateAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = UserProtSerializer
+class BokkUpdate(RetrieveUpdateAPIView):
+    queryset = BookModel.objects.all()
+    serializer_class = BookSerializer
 
-class UserProUpdate(RetrieveUpdateAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = UserProtSerializer
+class BookDelete(RetrieveUpdateDestroyAPIView):
+    queryset = BookModel.objects.all()
+    serializer_class = BookSerializer
     
-class UserProDelete(RetrieveDestroyAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = UserProtSerializer
+class BookUpdateDestroyAPIView(RetrieveDestroyAPIView):
+    queryset = BookModel.objects.all()
+    serializer_class = BookSerializer
     
-class UserProViews(RetrieveUpdateDestroyAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = UserProtSerializer
+
+    
